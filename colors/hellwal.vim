@@ -1,15 +1,17 @@
 """ Hellwal
 
-if exists('g:colors_name')
-  finish
+if filereadable(expand("$HOME/.cache/hellwal/colors.vim"))
+  source $HOME/.cache/hellwal/colors.vim
+else
+  echo "[HELLWAL]: 'colors.vim' in '~/.cache/hellwal/' not found. Run 'hellwal' to generate it, or make sure you have colors.vim in your template folder."
 endif
-let g:colors_name = "hellwal"
 
 " Ensure required color variables are set
 if !exists('g:hellwal_0')
-  echo "Hellwal colors not found! Please run 'hellwal' to generate them."
+  echo "[HELLWAL]: 'colors.vim' in '~/.cache/hellwal/' not found. Run 'hellwal' to generate it, or make sure you have colors.vim in your template folder."
   finish
 endif
+let g:colors_name = "hellwal"
 
 " Define colors
 let s:bg       = g:hellwal_background
@@ -50,7 +52,7 @@ execute "hi CursorLineNr guifg=" . s:color_8
 execute "hi DiffAdd guibg=" . s:color_2 . " gui=bold"
 execute "hi DiffChange guibg=" . s:color_3 . " gui=italic"
 execute "hi DiffDelete guifg=" . s:color_1 . " guibg=NONE gui=bold"
-execute "hi DiffText guibg=" . s:color_4 . " gui=bold,underline"
+execute "hi DiffText guibg=" . s:color_4 . " gui=bold"
 execute "hi Directory guifg=" . s:color_4
 execute "hi ErrorMsg guifg=" . s:color_1 . " guibg=" . s:color_0 . " gui=bold"
 execute "hi FoldColumn guifg=" . s:color_8 . " guibg=" . s:bg
@@ -94,7 +96,7 @@ execute "hi Define guifg=" . s:color_10
 execute "hi Error guifg=" . s:color_1 . " guibg=" . s:color_0 . " gui=bold"
 execute "hi Float guifg=" . s:color_4
 execute "hi Function guifg=" . s:color_4
-execute "hi Identifier guifg=" . s:color_9 . " gui=underline"
+execute "hi Identifier guifg=" . s:color_9
 execute "hi Keyword guifg=" . s:color_5 . " gui=italic"
 execute "hi Label guifg=" . s:color_3
 execute "hi Number guifg=" . s:color_7
